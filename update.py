@@ -27,10 +27,11 @@ templateFile.close()
 for search, replace in replaces.iteritems():
 	template = template.replace('{{'+search+'}}', replace)
 
-pkgbuild = open('PKGBUILD', 'w+')
-if template == pkgbuild.read():
+oldbuild = open('PKGBUILD', 'r')
+if template == oldbuild.read():
 	print "No build changes."
 else:
+	pkgbuild = open('PKGBUILD', 'w+')
 	pkgbuild.write(template)
 	pkgbuild.close()
 	os.system('mkaurball')
