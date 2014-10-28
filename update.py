@@ -1,6 +1,7 @@
 import urllib2
 import re
 import os
+import glob
 
 response = urllib2.urlopen('http://downloads.activestate.com/Komodo/nightly/komodoide/latest-trunk/SHA1SUM').read()
 
@@ -31,6 +32,8 @@ oldbuild = open('PKGBUILD', 'r')
 if template == oldbuild.read():
 	print "No build changes."
 else:
+	for build in glob.glob('Komodo-IDE-*'):
+		os.remove(build)
 	pkgbuild = open('PKGBUILD', 'w+')
 	pkgbuild.write(template)
 	pkgbuild.close()
