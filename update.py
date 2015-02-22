@@ -3,7 +3,7 @@ import re
 import os
 import glob
 
-response = urllib2.urlopen('http://downloads.activestate.com/Komodo/nightly/komodoide/latest-trunk/SHA1SUM').read()
+response = urllib2.urlopen('http://downloads.activestate.com/Komodo/nightly/komodoide/latest-master/SHA1SUM').read()
 
 
 packages = response.split("\n")
